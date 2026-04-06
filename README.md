@@ -41,6 +41,16 @@ pip install flask pandas scikit-learn imbalanced-learn joblib
 4. **Access the Website**:
    Open your browser and navigate to `http://127.0.0.1:5000`.
 
+## ☁️ Streamlit Deployment
+
+This project is optimized for deployment on **Streamlit Cloud**.
+
+1.  **Push your code** to GitHub (already handled).
+2.  Go to [share.streamlit.io](https://share.streamlit.io).
+3.  Connect your GitHub repository.
+4.  Select `streamlit_app.py` as the main file.
+5.  Click **Deploy**.
+
 ## 📂 Project Structure
 
 ```text
