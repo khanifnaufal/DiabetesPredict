@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiaPredict | AI-Powered Diabetes Risk Assessment</title>
+    <meta name="description" content="Professional AI-driven tool for assessing diabetes risk based on medical metrics. Get instant results and health recommendations.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> DiaPredict</h1>
+            <p>Advanced AI-Integrated Health Risk Assessment</p>
+        </header>
+
+        <main class="medical-card">
+            <form id="prediction-form" class="prediction-form">
+                <div class="form-group">
+                    <label for="Pregnancies">Number of Pregnancies</label>
+                    <input type="number" id="Pregnancies" name="Pregnancies" min="0" placeholder="e.g., 2" required>
+                    <small>For female patients (0 otherwise)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="Glucose">Glucose Level (mg/dL)</label>
+                    <input type="number" id="Glucose" name="Glucose" min="0" placeholder="e.g., 120" required>
+                    <small>Plasma glucose concentration (2 hours in GTT)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="BloodPressure">Blood Pressure (mm Hg)</label>
+                    <input type="number" id="BloodPressure" name="BloodPressure" min="0" placeholder="e.g., 70" required>
+                    <small>Diastolic blood pressure</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="SkinThickness">Skin Thickness (mm)</label>
+                    <input type="number" id="SkinThickness" name="SkinThickness" min="0" placeholder="e.g., 20" required>
+                    <small>Triceps skin fold thickness</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="Insulin">Insulin Level (mu U/ml)</label>
+                    <input type="number" id="Insulin" name="Insulin" min="0" placeholder="e.g., 85" required>
+                    <small>2-Hour serum insulin</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="BMI">Body Mass Index (BMI)</label>
+                    <input type="number" step="0.1" id="BMI" name="BMI" min="0" placeholder="e.g., 26.5" required>
+                    <small>Weight in kg/(height in m)²</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function</label>
+                    <input type="number" step="0.001" id="DiabetesPedigreeFunction" name="DiabetesPedigreeFunction" min="0" placeholder="e.g., 0.471" required>
+                    <small>Family history influence score</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="Age">Patient Age (Years)</label>
+                    <input type="number" id="Age" name="Age" min="1" max="120" placeholder="e.g., 35" required>
+                    <small>Current age of the patient</small>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="btn-text">Analyze Risk Profile</span>
+                    <div class="loading-spinner" id="loader"></div>
+                </button>
+            </form>
+
+            <div id="result-container">
+                <!-- Results will be injected here via JS -->
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DiaPredict Medical Intelligence Analytics. For educational purposes only.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+:root {
+    --primary-color: #1e88e5;
+    --secondary-color: #00acc1;
+    --accent-color: #f4511e;
+    --background-color: #f8fafc;
+    --text-color: #334155;
+    --white: #ffffff;
+    --success: #43a047;
+    --danger: #e53935;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    background-image: 
+        radial-gradient(at 0% 0%, hsla(208, 92%, 92%, 1) 0, transparent 50%), 
+        radial-gradient(at 50% 0%, hsla(187, 85%, 90%, 1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(210, 88%, 94%, 1) 0, transparent 50%);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+header p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.medical-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.prediction-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .prediction-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: #f1f5f9;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(30, 136, 229, 0.1);
+}
+
+.form-group small {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.submit-btn {
+    grid-column: span 2;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+    .submit-btn {
+        grid-column: span 1;
+    }
+}
+
+.submit-btn:hover {
+    background: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(30, 136, 229, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#result-container {
+    margin-top: 2rem;
+    display: none;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-card {
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.result-card.low-risk {
+    background: #ecfdf5;
+    border: 1px solid #d1fae5;
+}
+
+.result-card.high-risk {
+    background: #fef2f2;
+    border: 1px solid #fee2e2;
+}
+
+.result-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.low-risk h2 { color: var(--success); }
+.high-risk h2 { color: var(--danger); }
+
+.probability-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.probability-fill {
+    height: 100%;
+    transition: width 1s ease-in-out;
+}
+
+.low-risk .probability-fill { background: var(--success); }
+.high-risk .probability-fill { background: var(--danger); }
+
+.recommendation {
+    font-size: 1rem;
+    color: #475569;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
